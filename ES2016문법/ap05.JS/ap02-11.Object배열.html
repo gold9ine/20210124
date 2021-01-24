@@ -70,6 +70,8 @@
         }
     ];
 
+
+
     // Create
     objarray[objarray.length] = {
         text: 'Four',
@@ -92,9 +94,12 @@
 
     // Search
     var arrsearh = objarray.filter( function(item, index, items){
+
         return item["text"] === "One";
     });
     console.log( arrsearh ); // [ { text: 'One', value: 'A' }]
+
+
 
     // map 메서드: 새로운 배열 만들기
     var arrmap = objarray.map(function(item, index, items){
@@ -109,7 +114,9 @@
 
 
     // Sort
-    objarray.sort( function(){
-
+    console.log(objarray);
+    var sortarry = objarray.sort( function(a, b){
+        return a.value > b.value ? a: b;
     });
+    console.log(sortarry);
 </script>
