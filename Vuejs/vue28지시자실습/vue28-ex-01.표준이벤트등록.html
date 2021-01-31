@@ -97,14 +97,23 @@
         <xmp>
             span에 mouseover 이벤트 핸들러를 작성하시오. ==> spanmouseover. background-color를 yellow로 설정
             span에 mousedown 이벤트 핸들러를 작성하시오. ==> spanmousedown. background-color를 blue로 설정
-            span에 mouseup 이벤트 핸들러를 작성하시오. ==> spanmouseup. background-color를 pink로 설정
-            span에 mouseout 이벤트 핸들러를 작성하시오. ==> spanmouseout. background-color를 red로 설정
+            span에 mouseup 이벤트 핸들러를 작성하시오.   ==> spanmouseup.   background-color를 pink로 설정
+            span에 mouseout 이벤트 핸들러를 작성하시오.  ==> spanmouseout.  background-color를 red로 설정
         </xmp>
-        <span>
+        <span v-on:mouseover= "spanmouseover"
+              v-on:mousedown= "spanmousedown"
+              v-on:mouseup  = "spanmouseup"
+              v-on:mouseout = "spanmouseout" >
         </span>
-        <span>
+        <span v-on:mouseover= "spanmouseover"
+              v-on:mousedown= "spanmousedown"
+              v-on:mouseup  = "spanmouseup"
+              v-on:mouseout = "spanmouseout" >
         </span>
-        <span>
+        <span v-on:mouseover= "spanmouseover"
+              v-on:mousedown= "spanmousedown"
+              v-on:mouseup  = "spanmouseup"
+              v-on:mouseout = "spanmouseout">
         </span>
         <hr />
 
@@ -178,6 +187,7 @@
                 }
             },
             imageout: function(event){
+                console.log(event.target);
                 if( event.target.id === "but1") {
                     //this.$data.img_but1 = "../images/but1.gif";
                     this.$set( this.$data, "img_but1", "../images/but1.gif");
@@ -189,6 +199,27 @@
                 else {
 
                 }
+            },
+            spanmouseover: function(event){
+                console.log(event.target);
+                ///          style="background-color: yellow;"
+                event.target.style.backgroundColor="yellow";
+
+            },
+            spanmousedown: function(event){
+                console.log(event.target);
+                ///          style="background-color: blue;"
+                event.target.style.backgroundColor="blue";
+            },
+            spanmouseup: function(event){
+                console.log(event.target);
+                ///          style="background-color: pink;"
+                event.target.style.backgroundColor="pink";
+            },
+            spanmouseout: function(event){
+                console.log(event.target);
+                ///          style="background-color: red;"
+                event.target.style.backgroundColor="red";
             },
         },
         components: {
