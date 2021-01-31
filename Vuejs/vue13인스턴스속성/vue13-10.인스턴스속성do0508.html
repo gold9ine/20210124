@@ -87,6 +87,7 @@
         },
         computed: {
             computedcopy: function(){
+                // message 값이 바뀌면 computedcopy 값도 바꿔라
                 return this.$data.message;
             }
         },
@@ -94,7 +95,6 @@
             message: function( value){
                 // message 값이 바뀌면 watchcopy 값도 바꿔라
                 // this.$data.watchcopy = value;
-                debugger;
                 this.$set( this.$data, "watchcopy", value);
             }
         },
