@@ -39,9 +39,7 @@
         <button v-on:click="doMyName">버튼</button>
     </div>
 </body>
-
 </html>
-
 <!-- vue 플러그인 임포트   -->
 <script src="https://unpkg.com/vue@2.5.16/dist/vue.js">/* vue 플러그인 임포트 */</script>
 <script>
@@ -70,6 +68,9 @@
         },
         mounted: function() {
             console.log("mounted");
+            //this.$data.message = "change a data at mounted";
+            debugger;
+            this.$set(this.$data, "message", "change a data at mounted" );
         },
         updated: function() {
             console.log("updated");
