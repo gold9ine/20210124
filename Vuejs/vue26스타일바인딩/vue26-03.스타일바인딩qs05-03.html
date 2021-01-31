@@ -180,4 +180,38 @@
         },
     });
 
+    new Vue({
+        /* edtmc^2w */
+        el: "#elvue",
+        data: {
+            style1: {},
+        },
+        methods: {
+            overEvent: function(event){
+                console.log(event.target);
+                /*
+                배경색을 purple 로 글자색은 yellow ;
+                background-color: purple;
+                color:  yellow;
+                */
+                this.$data.style1 = {
+                    backgroundColor: "purple",
+                    color: "yellow",
+                }
+            },
+            outEvent: function(event){
+                console.log(event.target);
+                /*
+                배경색을 aqua 로 글자색은 black ;
+                background-color: aqua;
+                color:  black;
+                */
+                this.$data.style1 = {
+                    backgroundColor: "aqua",
+                    color: "black",
+                }
+            },
+        },
+    });
+
 </script>
