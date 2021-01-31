@@ -48,7 +48,7 @@
             event.target.dataset 을 사용하여 접근.
         </p>
         <div>10씩 증가: {{sum10}}</div>
-        <button v-on:click="clickBtn10" data-num="100">10씩 증가</button>
+        <button v-on:click="clickBtn10" data-num="10">10씩 증가</button>
         <hr />
     </div>
 
@@ -77,35 +77,30 @@
             },
             clickBtnInput: function(event){
                 console.log(event.target);
-                var numInput = Number( this.$data.numInput ); // 문자를 숫자로 형변환
-                //this.$data.sumInput =  this.$data.sumInput + numInput;
-                this.$set( this.$data, "sumInput", this.$data.sumInput + numInput);
-            },
-            clickBtn10: function(event){
-                console.log(event.target.dataset.num);
+                // input태그의 value 속성값 가져오기.
+                var value = this.$data.numInput; // 문자열
+                // 문자열 ==> 숫자 변환 : Number()
+                var num = Number( value );
 
-                // 문자를 숫자로 형변환
-                var num = Number( event.target.dataset.num );
-                //this.$data.sum10 =  this.$data.sum10 + num;
+                //this.$data.sumInput = this.$data.sumInput + num;
+
+                this.$set(this.$data, "sumInput", this.$data.sumInput + num )
+            },
+            clickBtn10: function (event) {
+                console.log(event.target);
+                // "data-이름" 속성으로 전달되는 값은 dataset 으로 받을 수 있다.
+                // event.target.dataset.이름 
+                // data-num="10" ==> event.target.dataset.num 
+                debugger;
+                var num = event.target.dataset.num; // 문자열
+                
+                // 문자열 ==> 숫자 변환 : Number()
+                var num = Number(num);
+
+                //this.$data.sum10 = this.$data.sum10 + num;
+
                 this.$set( this.$data, "sum10", this.$data.sum10 + num);
-
             },
-        },
-        components: {
-            /* 컴포넌트 등록. 예시) "태그명" : 컴포넌트명 */
-
-        },
-        computed: {
-
-        },
-        watch: {
-
-        },
-        mounted: function() {
-            console.log("mounted");
-        },
-        updated: function() {
-            console.log("updated");
         },
     });
 
