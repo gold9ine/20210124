@@ -76,9 +76,7 @@
         el: "#app",
         data: {
             state: "ready",
-            // msg: null,
         },
-        //template: ``,
         methods: {
             change: function(event){
                 console.log(event.target);
@@ -93,9 +91,6 @@
                 else if( this.$data.state === "done"){
                     //this.$data.state = "ready";
                     this.$set( this.$data, "state", "ready" );
-                }
-                else {
-
                 }
             },
         },
