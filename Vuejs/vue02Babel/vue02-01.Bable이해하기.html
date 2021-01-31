@@ -41,12 +41,16 @@
 
 <!-- ES5 사용하기 -->
 <script type="text/javascript">
-    var name ="abc";
+    var name = "abc";
     var age = 10;
+
     var getMessage = function(){
-        return  "ES5";
+        return "Hello, ES5";
     }
-    document.getElementById("output_es5").innerText = getMessage();
+
+    // 태그 찾고 설정
+    var output_es5 = document.getElementById("output_es5");
+    output_es5.innerText = getMessage();
 </script>
 
 <!-- ES6 사용하기 -->
@@ -55,9 +59,11 @@
     const name = "abc"; // 읽기전용
     let age = 10; // 읽기쓰기
 
-    const getMessage = () => {
-        return "ES6";
+    const getMessage = ()=>{
+        return "Hello, ES6";
     }
-    document.getElementById("output_es6").innerText = getMessage();
-
+    
+    // 태그 찾고 설정
+    const output_es6 = document.getElementById("output_es6");
+    output_es6.innerText = getMessage();
 </script>

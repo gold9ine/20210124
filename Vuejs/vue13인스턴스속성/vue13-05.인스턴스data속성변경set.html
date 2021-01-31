@@ -83,7 +83,6 @@
                 Vue.set() 은 Vue prototype 의 static 메서드
                 Vue.set(this.$data.msg4, 0, 100);
 
-
             3. splice()함수를 사용하여 변경한다.
                 this.$data.msg4.splice(0,2,500);
 
@@ -122,12 +121,13 @@
         /* edtmc^2w */
         el: "#app",
         data: {
-            arr : [1,2,3,4,5]
+            arr: [1,2,3,4,5],
         },
         //template: ``,
         methods: {
             change1: function(event){
                 console.log(event.target);
+                
                 this.$data.arr[0] = 100;
                 console.log(this.$data.arr);
 
@@ -148,23 +148,5 @@
             change4: function(event){
                 console.log(event.target);
             },
-        },
-        components: {
-            /* 컴포넌트 등록. 예시) "태그명" : 컴포넌트명 */
-
-        },
-        computed: {
-
-        },
-        watch: {
-
-        },
-        mounted: function() {
-            console.log("mounted");
-        },
-        updated: function() {
-            console.log("updated");
-        },
-    });
-
+        }
 </script>
