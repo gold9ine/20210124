@@ -134,3 +134,50 @@
 </body>
 
 </html>
+
+<!-- vue 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js">/* vue 플러그인 임포트 */</script>
+<script>
+    new Vue({
+        /* edtmc^2w */
+        el: "#example3",
+        data: {
+            style1: {},
+        },
+        methods: {
+            clickArrow: function(event){
+                console.log(event.target);
+                /*
+                height: 50px;
+                width: 150px;
+                border: 1px solid black;
+                text-align: center;
+                line-height: 50px;
+                font-weight: 800;
+                color: red;
+                background-color: darkgoldenrod;
+                padding: 50px;
+                */
+               // 방법1
+               this.$data.style1 = {};
+               this.$data.style1.height = "50px";
+               this.$data.style1.width = "150px";
+               this.$data.style1.border = "1px solid black";
+
+               // 방법2
+               this.$data.style1 = {
+                    height: "50px",
+                    width: "150px",
+                    border: "1px solid black",
+                    textClign: "center",
+                    lineHeight: "50px",
+                    fontWeight: "800",
+                    color: "red",
+                    backgroundColor: "darkgoldenrod",
+                    padding: "50px",
+               };
+            }
+        },
+    });
+
+</script>
