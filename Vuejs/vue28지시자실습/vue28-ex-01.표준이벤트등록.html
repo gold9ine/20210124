@@ -72,7 +72,7 @@
                 </a>
             </li>
             <li>
-                <a class="image3" href="../images/image4.jpg"v-on:click="imageclick">
+                <a class="image3" href="../images/image4.jpg" v-on:click="imageclick">
                     고양이 사진
                 </a>
             </li>
@@ -121,7 +121,7 @@
             select 에 change 이벤트 핸들러를 작성하시오.
             change 이벤트 핸들러: selectchange
         </xmp>
-        <select id="sel">
+        <select id="sel" v-on:change="selectchange">
             <option value="../images/strawberry.gif">딸기</option>
             <option value="../images/banana.gif">바나나</option>
             <option value="../images/apple.gif" selected>사과</option>
@@ -221,22 +221,12 @@
                 ///          style="background-color: red;"
                 event.target.style.backgroundColor="red";
             },
-        },
-        components: {
-            /* 컴포넌트 등록. 예시) "태그명" : 컴포넌트명 */
+            selectchange: function(event){
+                console.log(event.target);
 
-        },
-        computed: {
-
-        },
-        watch: {
-
-        },
-        mounted: function() {
-            console.log("mounted");
-        },
-        updated: function() {
-            console.log("updated");
+                //this.$data.img_select = event.target.value;
+                this.$set( this.$data, "img_select", event.target.value );
+            }
         },
     });
 
