@@ -32,21 +32,81 @@
 
     <div id="app">
         <h3>1씩 증가하는 click 이벤트 핸들러 작성 <== 각자 </h3>
-        <span>1씩 증가: {{sum1}}</span>
+        <div>1씩 증가: {{sum1}}</div>
         <button v-on:click="clickBtn1">1씩 증가</button>
         <hr />
 
         <h3>input 태그에 입력된 값만큼 증가하는 이벤트 핸들러 작성 <== 각자 </h3>
-        <span>{{numInput}}씩 증가: {{sumInput}}</span>
+        <div>{{numInput}}씩 증가: {{sumInput}}</div>
         <input type="number" name="number" v-model:value="numInput">
         <button v-on:click="clickBtnInput">{{numInput}} 씩 증가</button>
+        <hr />
 
         <h3>data-num 속성에 설정된 값만큼 증가하는 이벤트 핸들러 작성 <== 같이 </h3>
-        <span>10씩 증가: {{sum10}}</span>
-        <button v-on:click="clickBtn10" data-num="10">10씩 증가</button>
+        <p>
+            Vue.js 에서 이벤트 핸들러에 매개변수를 넘기는 방법. <br>
+            event.target.dataset 을 사용하여 접근.
+        </p>
+        <div>10씩 증가: {{sum10}}</div>
+        <button v-on:click="clickBtn10" data-num="100">10씩 증가</button>
         <hr />
     </div>
 
 </body>
 
 </html>
+
+<!-- vue 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js">/* vue 플러그인 임포트 */</script>
+<script>
+    new Vue({
+        /* edtmc^2w */
+        el: "#app",
+        data: {
+            sum1: 0,
+            numInput: 0,
+            sumInput: 0,
+            sum10: 0,
+        },
+        //template: ``,
+        methods: {
+            clickBtn1: function(event){
+                console.log(event.target);
+                //this.$data.sum1 =  this.$data.sum1 + 1;
+                this.$set(this.$data, "sum1",  this.$data.sum1 + 1 );
+            },
+            clickBtnInput: function(event){
+                console.log(event.target);
+                var numInput = Number( this.$data.numInput ); // 문자를 숫자로 형변환
+                //this.$data.sumInput =  this.$data.sumInput + numInput;
+                this.$set( this.$data, "sumInput", this.$data.sumInput + numInput);
+            },
+            clickBtn10: function(event){
+                console.log(event.target.dataset.num);
+
+                // 문자를 숫자로 형변환
+                var num = Number( event.target.dataset.num );
+                //this.$data.sum10 =  this.$data.sum10 + num;
+                this.$set( this.$data, "sum10", this.$data.sum10 + num);
+
+            },
+        },
+        components: {
+            /* 컴포넌트 등록. 예시) "태그명" : 컴포넌트명 */
+
+        },
+        computed: {
+
+        },
+        watch: {
+
+        },
+        mounted: function() {
+            console.log("mounted");
+        },
+        updated: function() {
+            console.log("updated");
+        },
+    });
+
+</script>
