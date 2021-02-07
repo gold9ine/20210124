@@ -200,6 +200,7 @@
         array.findIndex() 사용법
         array.splice() 사용법
 
+
     todoItems 는 아래와 같다고 가정한다
     todoItems = [
         { id: 1, todo: "영화보기", done: false },
@@ -207,6 +208,10 @@
         { id: 3, todo: "ES6 학습", done: false },
         { id: 4, todo: "잠실 야구장", done: false }
     ]
+
+    todoItems에서 최대 id 값을 구하는 방법.
+        방법1. todoItems.reduce()
+        방법2. todoItems.map() 를 사용하는 방법
 
     기능 추가
         1. add 할 때 this.$data.todoItems 가 빈 배열인 경우 기능 추가
@@ -298,7 +303,7 @@
         el: "#app",
         data: {
             newTodoItem: null,
-            showModal: false,
+            showModal: null,
             todoItems: [
                 { id: 1, todo: "영화보기", done: false },
                 { id: 2, todo: "주말 산책", done: true },
@@ -309,19 +314,64 @@
         //template: ``,
         methods: {
             addTodo: function(event){
+                console.log(event.target);
 
+                //최대 id 값을 구하는 방법.
+                //방법1. .reduce()
+                //방법2. .map() 를 사용하는 방법
+                var maxObj = null;
+                if( this.$data.todoItems.length>0) {
+                    maxObj = this.$data.todoItems.reduce( (prevItem,nextItem)=>{
+                        // 최대 id 값을 갖고있는 item을 찾는다.
+                        return prevItem.id > nextItem.id ? prevItem : nextItem;
+                    });
+                }
+                else {
+                    // 빈 배열인 경우
+                    maxObj = {
+                        id: 0,
+                        todo: null,
+                        done: false,
+                    }
+                }
+
+                // 추가할 객체 생성:
+                var newTodo = {
+                    id: maxObj.id + 1,
+                    todo: this.$data.newTodoItem,
+                    done: false
+                };
+                // this.$data.todoItems.push( newTodo );
+                // this.$data.todoItems[this.$data.todoItems.length] = newTodo;
+                this.$set(this.$data.todoItems, this.$data.todoItems.length, newTodo );
+
+                // 화면에 남아있는 입력값 지우기
+                // this.$data.newTodoItem = "";
+                this.$set( this.$data, "newTodoItem", "" );
             },
             checked: function(done){
-
+                // "checked(todoItem.done)"  <==> "todoItem.done ? 'checked': ''"
+                if( done ) {
+                    return "checked";
+                }
+                else {
+                    return null;
+                }
             },
             doneToggle: function(id, index){
-
+                // 예시:
+                // 변경전: { id: 1, todo: "영화보기", done: false }
+                // 변경후: { id: 1, todo: "영화보기", done: true }
+                // this.$data.todoItems[index].done =  !this.$data.todoItems[index].done;
+                this.$set(this.$data.todoItems[index], "done", !this.$data.todoItems[index].done);
             },
             removeTodo: function(id, index){
 
             },
             clearAll: function(){
-
+                // 전체 삭제
+                // this.$data.todoItems = [];
+                this.$set(this.$data, "todoItems", []);
             },
         },
         components: {
