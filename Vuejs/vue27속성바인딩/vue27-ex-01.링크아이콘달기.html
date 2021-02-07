@@ -85,6 +85,27 @@
         <h1>Adding Icons to Links</h1>
         <p>Here's a list of downloadable files:</p>
         <ul class="icon-links">
+            <li><a href="presentation.ppt">Presentation slides</a></li>
+            <li><a href="video.mp4">Video of presentation</a></li>
+            <li><a href="notes.pdf">Notes for presentation</a></li>
+            <li><a href="icons.gif">GIF Icon sprite</a></li>
+            <li><a href="icons.png">PNG Icon sprite</a></li>
+            <li><a href="icons.jpg">PNG Icon sprite</a></li>
+            <li><a href="fuyyu.ppt">Presentation slides</a></li>
+            <li><a href="fyyuy.mp4">Video of presentation</a></li>
+            <li><a href="uydyuflk.pdf">Notes for presentation</a></li>
+            <li><a href="OIP.gif">GIF Icon sprite</a></li>
+            <li><a href="ID7890IO.png">PNG Icon sprite</a></li>
+            <li><a href="PFDY.jpg">PNG Icon sprite</a></li>
+        </ul>
+    </div>
+    <hr>
+
+    <script type="text/x-template" id="template">
+    <div>
+        <h1>Adding Icons to Links</h1>
+        <p>Here's a list of downloadable files:</p>
+        <ul class="icon-links">
             <li><a v-on:click="aClick" href="presentation.ppt">Presentation slides</a></li>
             <li><a v-on:click="aClick" href="video.mp4">Video of presentation</a></li>
             <li><a v-on:click="aClick" href="notes.pdf">Notes for presentation</a></li>
@@ -99,8 +120,7 @@
             <li><a v-on:click="aClick" href="PFDY.jpg">PNG Icon sprite</a></li>
         </ul>
     </div>
-    <hr>
-
+    </script>
 
 </body>
 
@@ -116,6 +136,10 @@
     new Vue({
         /* edtmc^2w */
         el: "#app",
+        data: {
+    
+        },
+        template: "#template",
         methods: {
             aClick: function(event){
                 // a 태그의 리다이렉트 이벤트 취소
