@@ -224,7 +224,7 @@
         1. checked 메서드에서 class에 빈 문자열로 설정하면 안됨.
             null 로 설정하면 됨.
         2. 삭제 버튼을 클릭하면 click 이벤트가 bubbling 안되게
-            이벤트 취소하는 기능을 추가해야 한다.
+            이벤트 취소 기능을 추가해야 한다.
             변경 전: v-on:click="removeTodo(todoItem.id, index)"
             변경 후: v-on:click.stop="removeTodo(todoItem.id, index)"
     </pre>
