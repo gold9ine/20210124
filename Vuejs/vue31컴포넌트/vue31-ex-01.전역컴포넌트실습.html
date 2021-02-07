@@ -97,12 +97,6 @@
 <script>
     // component-header
     var ComponentHeader = {
-        /* pdtmc^2w */
-        props: [] ,
-        data: function() {
-            return {
-            }
-        },
         template: `
         <header>
             Header
@@ -111,12 +105,6 @@
     };
 
     var ComponentAside = {
-        /* pdtmc^2w */
-        props: [] ,
-        data: function() {
-            return {
-            }
-        },
         template: `
             <aside>
                 Aside
@@ -125,12 +113,6 @@
     };
 
     var ComponentContentList = {
-        /* pdtmc^2w */
-        props: [] ,
-        data: function() {
-            return {
-            }
-        },
         template: `
             <div id="content-list">
                 List
@@ -160,12 +142,6 @@
 
     // component-footer
     var ComponentFooter = {
-        /* pdtmc^2w */
-        props: [] ,
-        data: function() {
-            return {
-            }
-        },
         template: `
         <footer>
             Footer
@@ -176,30 +152,11 @@
     new Vue({
         /* edtmc^2w */
         el: "#app",
-        data: {
-
-        },
-        //template: ``,
-        methods: {
-
-        },
         components: {
             /* 지역 컴포넌트 등록. 예시) "태그명" : 컴포넌트명 */
             "component-header": ComponentHeader,
             "component-content": ComponentContent,
             "component-footer": ComponentFooter,
-        },
-        computed: {
-
-        },
-        watch: {
-
-        },
-        mounted: function() {
-            console.log("mounted");
-        },
-        updated: function() {
-            console.log("updated");
         },
     });
 
