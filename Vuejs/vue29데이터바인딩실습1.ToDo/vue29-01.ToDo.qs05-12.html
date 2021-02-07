@@ -192,15 +192,15 @@
 
 <body>
     <pre style="text-align:left;">
-    
+
     선 학습 필요 사항:
-        array.reduce() 사용법 
-        array.map() 사용법 
-        array.filter() 사용법 
-        array.findIndex() 사용법 
-        array.splice() 사용법 
-        
-    todoItems 는 아래와 같다고 가정한다 
+        array.reduce() 사용법
+        array.map() 사용법
+        array.filter() 사용법
+        array.findIndex() 사용법
+        array.splice() 사용법
+
+    todoItems 는 아래와 같다고 가정한다
     todoItems = [
         { id: 1, todo: "영화보기", done: false },
         { id: 2, todo: "주말 산책", done: true },
@@ -210,16 +210,16 @@
 
     기능 추가
         1. add 할 때 this.$data.todoItems 가 빈 배열인 경우 기능 추가
-        2. add 후에 input 태그의 입력 값 지우기. 
+        2. add 후에 input 태그의 입력 값 지우기.
         3. 토글 할 때 findIndex 로 못 찾는 경우에 대한 방어 코드 추가.
-        4. input 태그에 빈 문자일이 입력 되는 경우는 배열에 추가되지 않게. 
-        5. todo 타이틀 바꾸기. 기능 누락. 추가 필요
+        4. input 태그에 빈 문자일이 입력 되는 경우는 배열에 추가되지 않게.
+        5. todo 타이틀 바꾸기. 기능 누락. 기능 추가가 필요합니다.
 
     주의 사항.
-        1. checked 메서드에서 class에 빈 문자열로 설정하면 안됨. 
-            null 로 설정하면 됨. 
-        2. 삭제 버튼을 클릭하면 click 이벤트가 bubbling 안되게 
-            이벤트 취소하는 기능을 추가해야 한다. 
+        1. checked 메서드에서 class에 빈 문자열로 설정하면 안됨.
+            null 로 설정하면 됨.
+        2. 삭제 버튼을 클릭하면 click 이벤트가 bubbling 안되게
+            이벤트 취소하는 기능을 추가해야 한다.
             변경 전: v-on:click="removeTodo(todoItem.id, index)"
             변경 후: v-on:click.stop="removeTodo(todoItem.id, index)"
     </pre>
@@ -261,6 +261,7 @@
         </div>
 
         <!-- TodoList -->
+        <!-- "checked(todoItem.done)"  <==> "todoItem.done ? 'checked': ''"  -->
         <section>
             <transition-group name="list" tag="ul">
                 <li v-for="(todoItem, index) in todoItems"
@@ -271,7 +272,7 @@
                     {{ todoItem.todo }}
                     <span class="removeBtn"
                           type="button"
-                          v-on:click.stop="removeTodo(todoItem.id, index)">
+                          v-on:click="removeTodo(todoItem.id, index)">
                         <i class="far fa-trash-alt" aria-hidden="true"></i>
                     </span>
                 </li>
@@ -288,3 +289,57 @@
 </body>
 
 </html>
+
+<!-- vue 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js">/* vue 플러그인 임포트 */</script>
+<script>
+    new Vue({
+        /* edtmc^2w */
+        el: "#app",
+        data: {
+            newTodoItem: null,
+            showModal: false,
+            todoItems: [
+                { id: 1, todo: "영화보기", done: false },
+                { id: 2, todo: "주말 산책", done: true },
+                { id: 3, todo: "ES6 학습", done: false },
+                { id: 4, todo: "잠실 야구장", done: false }
+            ],
+        },
+        //template: ``,
+        methods: {
+            addTodo: function(event){
+
+            },
+            checked: function(done){
+
+            },
+            doneToggle: function(id, index){
+
+            },
+            removeTodo: function(id, index){
+
+            },
+            clearAll: function(){
+
+            },
+        },
+        components: {
+            /* 컴포넌트 등록. 예시) "태그명" : 컴포넌트명 */
+
+        },
+        computed: {
+
+        },
+        watch: {
+
+        },
+        mounted: function() {
+            console.log("mounted");
+        },
+        updated: function() {
+            console.log("updated");
+        },
+    });
+
+</script>
