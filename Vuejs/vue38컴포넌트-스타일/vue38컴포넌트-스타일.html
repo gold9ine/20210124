@@ -24,8 +24,8 @@
 
         Vue-CLI 을 사용하여 어플리케이션을 만들고 컴포넌트 스타일 적용 방법을 학습한다.
         "Vue 컴포넌트 스타일.pdf"를 참조하여 실습합니다.
-        
-        1. 컴포넌트 스타일 적용 방법
+
+        1. 컴포넌트에 스타일 적용 방법
             1. 전역 CSS
                 CSS 충돌
                 <style></style>
@@ -59,9 +59,9 @@
             $ ls
             vue38컴포넌트-스타일.html
 
-            step 05. todoprj01 프로젝트 생성. package.json 생성.
-            $ vue create todoprj01
-            Vue CLI v4.5.9
+            step 05. styleprj01 프로젝트 생성. package.json 생성.
+            $ vue create styleprj01
+            Vue CLI v4.5.11
             ? Please pick a preset:
               Default ([Vue 2] babel, eslint)
               Default (Vue 3 Preview) ([Vue 3] babel, eslint)
@@ -113,24 +113,20 @@
 
 
 
-            step 06. 현재 폴더의 파일 목록 조회. 프로젝터 폴더(styletest) 존재 여부 확인.
+            step 06. 현재 폴더의 파일 목록 조회. 프로젝터 폴더(styleprj01) 존재 여부 확인.
             $ ls
-            styletest vue38컴포넌트-스타일.html
-            
-            step 07. 생성된 프로젝트 폴더(styletest)로 이동
-            $ cd styletest
-            
-            
+            styleprj01 vue38컴포넌트-스타일.html
+
+            step 07. 생성된 프로젝트 폴더(styleprj01)로 이동
+            $ cd styleprj01
+
+
             step 08. 현재 폴더의 파일 목록 조회. package.json 이 보이면 정상.
             $ ls
             babel.config.js  node_modules  package.json  package-lock.json  public  README.md  src
-            
-            
-            step 10. 비동기 통신 라이브러리 axios 추가
-            $ npm install --save  axios
 
-            step 11.  프로젝트 실행 설정 todoprj01/package.json 수정
-                a. 실행시 브라우저로 열기  ==>  --open        
+            step 11.  프로젝트 실행 설정 styleprj01/package.json 수정.
+                a. 실행시 브라우저로 열기  ==>  --open
                 b. 실행 서버 포트 변경     ==>  --port 4000
 
                 "scripts": {
@@ -138,25 +134,25 @@
                     "build": "vue-cli-service build",
                     "lint": "vue-cli-service lint"
                 },
-                
+
             step 12. 현재 폴더의 파일 목록 조회. package.json 존재하는지 확인
             $ ls
 
             step 13. 서버 실행. package.json 이 있는 폴더에서 실행 해야 됨.
             $ npm run serve
 
-            step 14. 배포할 파일들이 생성됨. 빌드가 완료되면  dist/ 폴더에 관련 파일들이 생성됨.
-            $ npm run build
-
-            step 15. 코드 표준화 수행
+            step 14. 코드 표준화 수행
             $ npm run lint
+
+            step 15. 배포할 파일을 생성. 빌드가 완료되면  dist/ 폴더에 관련 파일들이 생성됨.
+            $ npm run build
 
 
 
         ##################################
         3. 프로젝트 폴더 구조
         ##################################
-        
+
 
           프로젝트
             ├─ dist
@@ -168,6 +164,7 @@
             │   └─ components
             │   │       └─ HelloWorld.vue  # 파일 삭제
             │   │       └─ Child1.vue      # 파일 생성. 스타일 기능을 테스트용 component
+            │   │       └─ Child11.vue      # 파일 생성. 스타일 기능을 테스트용 component
             │   │       └─ Child2.vue      # 파일 생성. 스타일 기능을 테스트용 component
             │   │       └─ Module1.vue     # 파일 생성. 스타일 기능을 테스트용 component
             │   ├─ router               # 라우터
@@ -179,7 +176,7 @@
             └─ README.md
 
         4. Child1.vue
-        
+
             step 4-1. src/components/Child1.vue  에 추가
             <style scoped>
                 .main { border:solid 1px black; background-color:yellow; }
@@ -207,7 +204,7 @@
 
 
             step 4-2. src/components/Child2.vue 에 추가
-            
+
             <style scoped>
                 .main { border:solid 1px black; background-color:aqua; }
             </style>
@@ -224,8 +221,8 @@
                 }
               }
             </s cript>
-            
-            
+
+
             step 4-3. src/components/Child11.vue 에 추가
             <template>
                 <div class="test">
@@ -244,7 +241,7 @@
                 .box { width:100px; height:100px; background-color:aqua; }
                 .border { border:solid 1px orange; }
             </style>
-            
+
             <template>
                 <div>
                     <button v-bind:class="$style.hand"> CSS Module을 적용한 버튼 </button>
@@ -252,7 +249,13 @@
                 </div>
             </template>
 
-            
+            <script>
+            export default {
+                created() {
+                    console.log(this.$style);/* eslint-disable-next-line no-console */
+                }
+            }
+            </script>
 
     </xmp>
 
