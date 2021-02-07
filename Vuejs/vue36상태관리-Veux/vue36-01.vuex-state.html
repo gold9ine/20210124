@@ -97,19 +97,58 @@
     // Vuex 인스턴스 만들기
     var store = new Vuex.Store({
         actions: {
+            /* 왜 actions를 사용하나? 비동기식 처리 위해서
+               actions 에는 메서드만 등록 가능하다.
+               첫번째인자: 무조건 mutations로 지정해야 한다 .
+               두번째인자: 값. store.dispatch()호출시 넘겨지는 값이다.
+            */
+            increment: function( mutations, param ){
+                debugger;
+                console.log(param);
 
+                // 비동기 함수 호출 대체
+                window.setTimeout( ()=>{
+                    mutations.commit( "increment", param);
+                }, 1000);
+            },
+            decrement: function( mutations, param ){
+                debugger;
+                console.log(param);
+
+                // 비동기 함수 호출 대체
+                window.setTimeout( ()=>{
+                    mutations.commit( "decrement", param);
+                }, 1000);
+            },
         },
         mutations: {
-
+            /* 왜 mutations 를 사용하나? state 를 바꾸기 위해서
+            mutations 는 메서드만 가능하다.
+            첫번째인자: 무조건 state.
+            두번째인자: 값. mutations.commit() 호출시 넘겨지는 값이다.
+            */
+            increment: function( state, param ){
+                debugger;
+                //state 변경
+                state.counter = state.counter + param;
+            },
+            decrement: function( state, param ){
+                debugger;
+                //state 변경
+                state.counter = state.counter + param;
+            },
         },
         state: {
-            welcome: "HELLO WORLD",
-            counter: 0,
+            welcome: "HELLO WORLD STORE",
+            counter: 10,
         },
         getters: {
             welcome: function(state){
                 return state.welcome;
-            }
+            },
+            counter: function(state){
+                return state.counter;
+            },
         }
     });
 
@@ -124,10 +163,14 @@
         //template: ``,
         methods: {
             increment: function(event){
-
+                // 버튼을 누르면 store의 action 호출
+                //store.dispatch("액션명", 액션값)
+                store.dispatch("increment", +10 );
             },
             decrement: function(event){
-
+                // 버튼을 누르면 store의 action 호출
+                //store.dispatch("액션명", 액션값)
+                store.dispatch("decrement", -10 );
             },
         },
         components: {
@@ -135,7 +178,12 @@
 
         },
         computed: {
-
+            welcome: function(){
+                return store.getters.welcome;
+            },
+            counter: function(){
+                return store.getters.counter;
+            },
         },
         watch: {
 
