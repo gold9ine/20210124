@@ -71,15 +71,16 @@
         `,
         methods: {
             showLog: function(event){
+                console.log( event.target )
+                
                 // this.$emit()은 사용자 정의 이벤트를 발생시킨다.
                 // 부모에게 데이터 넘기기
                 // this.$emit( "사용자이벤트명", 넘길값1, 넘길값2,... )
-                debugger;
                 this.$emit("show-log", "abc", 123);
             }
         },
         components: {
-            /* 지역 컴포넌트 등록. 예시) "태그명" : 컴포넌트명 */
+            /* 컴포넌트 등록. 예시) "태그명" : 컴포넌트명 */
 
         },
         computed: {
@@ -107,15 +108,14 @@
         //template: ``,
         methods: {
             printText: function(param1, param2){
-                debugger;
                 console.log(param1, param2);
 
                 //this.$data.mesg = param1 + "||" + param2;
                 this.$set( this.$data, "mesg", param1 + "||" + param2 );
-            }
+            },
         },
         components: {
-            /* 지역 컴포넌트 등록. 예시) "태그명" : 컴포넌트명 */
+            /* 컴포넌트 등록. 예시) "태그명" : 컴포넌트명 */
             "child-component": ChildComponent,
         },
         computed: {

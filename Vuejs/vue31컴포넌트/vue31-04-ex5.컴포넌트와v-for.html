@@ -59,15 +59,23 @@
 <!-- vue 플러그인 임포트   -->
 <script src="https://unpkg.com/vue@2.5.16/dist/vue.js">/* vue 플러그인 임포트 */</script>
 <script>
-    var componentBox = {
+    var ComponentBox = {
         /* pdtmc^2w */
         props: ["num"] ,
         data: function() {
             return {
+                spanstyle : {
+                    display:"inline-block",
+                    fontSize:"3em",
+                    border:"1px dashed blue",
+                    padding:"10px 20px",
+                    margin:"5px",
+                    textAlign:"center",
+                }
             }
         },
         template: `
-        <span style="display:inline-block; font-size:3em; border:1px dashed blue; padding:10px 20px; margin:5px; text-align:center;">
+        <span v-bind:style="spanstyle">
             {{num}}
         </span>
         `,
@@ -75,7 +83,7 @@
 
         },
         components: {
-            /* 지역 컴포넌트 등록. 예시) "태그명" : 컴포넌트명 */
+            /* 컴포넌트 등록. 예시) "태그명" : 컴포넌트명 */
 
         },
         computed: {
@@ -111,7 +119,7 @@
         },
         components: {   
             /* 지역 컴포넌트 등록. 예시) "태그명" : 컴포넌트명 */
-            "component-box": componentBox,
+            "component-box": ComponentBox,
         },
         computed: {
 

@@ -2,7 +2,7 @@
     <div class="col-md-3 mt-4">
         <h1 class="text-center">Login</h1>
         <template v-if="!isLogin">
-            <form name="loginF" method="POST" v-on:submit.prevent="loginCheck">
+            <form name="loginF" method="POST" v-on:submit.prevent="login">
                 <div class="row">
                     <div class="col-md-10 offset-md-1">
                         User ID:
@@ -35,6 +35,13 @@
                     </button>
                 </div>
             </form>
+            <div>
+                <p>
+                    로그인 테스트용: ID / PW<br/>
+                    uid01 / pwd01<br/>
+                    uid02 / pwd02<br/>
+                </p>
+            </div>
         </template>
         <template v-else>
             <div class="alert alert-primary m-4">

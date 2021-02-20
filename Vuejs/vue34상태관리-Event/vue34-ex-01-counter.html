@@ -115,9 +115,15 @@
         `,
         methods: {
             addCounter: function(event){
+                console.log(event.target);
+                // 이벤트 발생시키기
+                // 부모는 2개의 인자를 달라고 한다. 
                 this.$emit("add-counter", event, +10);
             },
             subCounter: function(event){
+                console.log(event.target);
+                // 이벤트 발생시키기
+                // 부모는 2개의 인자를 달라고 한다. 
                 this.$emit("sub-counter", event, -10);
             },
         },
@@ -162,7 +168,7 @@
             },
         },
         components: {
-            /* 지역 컴포넌트 등록. 예시) "태그명" : 컴포넌트명 */
+            /* 컴포넌트 등록. 예시) "태그명" : 컴포넌트명 */
             "component-child": ComponentChild,
         },
         computed: {

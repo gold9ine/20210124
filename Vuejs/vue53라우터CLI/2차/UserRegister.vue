@@ -27,7 +27,7 @@
                             class="form-control"
                             placeholder="User ID"
                         />
-                        <div class="text-danger" v-show="idErr">
+                        <div class="text-danger" v-show="errId">
                             아이디는 4자이상 6자 이하 입니다.
                         </div>
                     </div>
@@ -43,7 +43,7 @@
                             placeholder="Password"
                             class="form-control"
                         />
-                        <div class="text-danger" v-show="pwdErr">
+                        <div class="text-danger" v-show="errPwd">
                             비밀번호는 4자 이상 8자 이내입니다.
                         </div>
                     </div>
@@ -58,7 +58,7 @@
                             placeholder="Password Confirm"
                             class="form-control"
                         />
-                        <div class="text-danger" v-show="pwdErr2">
+                        <div class="text-danger" v-show="errPwd2">
                             비밀번호가 일치하지 않아요
                         </div>
                     </div>
@@ -74,7 +74,7 @@
                             placeholder="Email"
                             class="form-control"
                         />
-                        <div class="text-danger" v-show="emailErr">
+                        <div class="text-danger" v-show="errEmail">
                             이메일 형식에 맞지 않아요
                         </div>
                     </div>
@@ -109,29 +109,19 @@ export default {
                 pwd: "",
                 email: ""
             },
-            idErr: false,
-            pwdErr: false,
-            pwdErr2: false,
-            emailErr: false,
-            isProcess : false
+            errId: false,
+            errPwd: false,
+            errPwd2: false,
+            errEmail: false,
+            isProcess: false
         };
     },
     methods: {
-        checkId: function() {
-
-        },
-        checkPwd: function(){
-
-        },
-        checkRePwd : function() {
-
-        },
-        checkEmail: function(){
-
-        },
-        join: function() {
-
-        }
+        checkId: function () {},
+        checkPwd: function () {},
+        checkRePwd: function () {},
+        checkEmail: function () {},
+        join: function () {},
     }
 };
 </script>

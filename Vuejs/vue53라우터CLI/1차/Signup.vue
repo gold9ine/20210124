@@ -4,4 +4,3 @@
         <user-register></user-register>
     </div>
 </template>
-
