@@ -232,7 +232,7 @@
         <todo-header></todo-header>
 
         <!-- TodoInput -->
-        <todo-input></todo-input>
+        <todo-input v-on:add-todo="addTodo"></todo-input>
 
         <!-- TodoList -->
         <todo-list v-bind:todo-items="todoItems"
@@ -241,7 +241,7 @@
         ></todo-list>
 
         <!-- TodoFooter -->
-        <todo-footer></todo-footer>
+        <todo-footer v-on:clear-all="clearAll"></todo-footer>
 
     </div>
 
@@ -303,8 +303,8 @@
         `,
         methods: {
             clearAll: function(event){
-                console.log(event.target);
-            }
+                this.$emit("clear-all");
+            },
         },
         components: {
             /* 지역 컴포넌트 등록. 예시) "태그명" : 컴포넌트명 */
@@ -364,8 +364,14 @@
         </div>
         `,
         methods: {
-            addTod: function(event) {
+            addTodo: function(event) {
                 console.log(event.target);
+                // newTodoItem 값을 부모에게 보낸다.
+                this.$emit( "add-todo", this.$data.newTodoItem );
+
+                // input 태그에 남아있는 입력값 지우기
+                // this.$data.newTodoItem = "";
+                this.$set( this.$data, "newTodoItem", "" );
             },
         },
         components: {
@@ -469,6 +475,38 @@
         },
         //template: ``,
         methods: {
+            addTodo: function(newTodoItem) {
+                console.log(event.target);
+
+                //최대 id 값을 구하는 방법.
+                //방법1. array.reduce()
+                //방법2. array.map() 를 사용하는 방법
+                var maxObj = null;
+                if( this.$data.todoItems.length>0) {
+                    maxObj = this.$data.todoItems.reduce( (prevItem,nextItem)=>{
+                        // 최대 id 값을 갖고있는 item을 찾는다.
+                        return prevItem.id > nextItem.id ? prevItem : nextItem;
+                    });
+                }
+                else {
+                    // 빈 배열인 경우
+                    maxObj = {
+                        id: 0,
+                        todo: null,
+                        done: false,
+                    }
+                }
+
+                // 추가할 객체 생성:
+                var newTodo = {
+                    id: maxObj.id + 1,
+                    todo: newTodoItem,
+                    done: false
+                };
+                // this.$data.todoItems.push( newTodo );
+                // this.$data.todoItems[this.$data.todoItems.length] = newTodo;
+                this.$set(this.$data.todoItems, this.$data.todoItems.length, newTodo );
+            },
             doneToggle: function(id, index){
                 // 예시:
                 // 변경전: { id: 1, todo: "영화보기", done: false }
@@ -483,6 +521,11 @@
                 // 이벤트 취소를 이용하여 click 버블링 막기
                 //event.stopPropagation();
                 //event.preventDefault();
+            },
+            clearAll: function(){
+                // 전체 삭제
+                // this.$data.todoItems = [];
+                this.$set(this.$data, "todoItems", []);
             },
         },
         components: {
